@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import BotArmy from "./YourBotArmy";
+import { Link } from "react-router-dom";
 
 function BotCollection() {
   const [bots, setBots] = useState([]);
@@ -14,11 +16,17 @@ function BotCollection() {
       .then((data) => setBots(data));
   }, []);
 
+  const ClickCard =()=>{
+   console.log("Clicked"); 
+   return <BotArmy />     
+  }
+
   return (
+    <div >
     <div className="row">       
       {bots.map((bot) => (
         <div  className="col-sm-3 mb-3 mb-sm-2" >
-            <div className="card" key={bot.id}>
+            <div className="card" key={bot.id} onClick={ClickCard}>
           <img src={bot.avatar_url} className="card-img-top" alt="..." />
           <div className="card-body">
             <h5 className="card-title">{bot.name}</h5>
@@ -28,22 +36,8 @@ function BotCollection() {
         </div>
       ))}
          </div>  
-        
- 
+         </div>
   );
 }
-{/*    
-      
-    
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-</div> */}
 
 export default BotCollection;
