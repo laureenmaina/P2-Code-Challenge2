@@ -17,7 +17,7 @@ function BotCollection() {
   return (
     <div className="row">       
       {bots.map((bot) => (
-        <div  className="col-sm-3 mb-3 mb-sm-0" >
+        <div  className="col-sm-3 mb-3 mb-sm-2" >
             <div className="card" key={bot.id}>
           <img src={bot.avatar_url} className="card-img-top" alt="..." />
           <div className="card-body">
