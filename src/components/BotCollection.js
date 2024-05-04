@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import BotArmy from "./YourBotArmy";
-import { Link } from "react-router-dom";
 
-function BotCollection() {
+
+function BotCollection({enlistBot}) {
   const [bots, setBots] = useState([]);
 
   useEffect(() => {
@@ -15,18 +14,16 @@ function BotCollection() {
       .then((response) => response.json())
       .then((data) => setBots(data));
   }, []);
-
-  const ClickCard =()=>{
-   console.log("Clicked"); 
-   return <BotArmy />     
-  }
+  const ClickCard = (bot) => {
+  //  enlistBot(bot)
+  };
 
   return (
     <div >
     <div className="row">       
       {bots.map((bot) => (
         <div  className="col-sm-3 mb-3 mb-sm-2" >
-            <div className="card" key={bot.id} onClick={ClickCard}>
+            <div className="card" key={bot.id} onClick={()=>ClickCard(bot)}>
           <img src={bot.avatar_url} className="card-img-top" alt="..." />
           <div className="card-body">
             <h5 className="card-title">{bot.name}</h5>
