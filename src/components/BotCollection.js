@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SortBar from "./SortBar";
+import FilterData from "./Filter";
 
 function BotCollection({ enlistBot }) {
   const [bots, setBots] = useState([]);
@@ -15,6 +16,7 @@ function BotCollection({ enlistBot }) {
       .then((data) => setBots(data));
   }, []);
 
+  // Delete
   function deleteBot(id) {
     fetch(`https://json-server-bot.onrender.com/bots/${id}`, {
       method: "DELETE",
@@ -29,7 +31,7 @@ function BotCollection({ enlistBot }) {
   const ClickCard = (bot) => {
     enlistBot(bot.id);
   };
-
+// Sort
     const sortBots = (c) => {
     const sortedBots = [...bots].sort((a, b) => {
       if (a[c] < b[c]) return -1;
@@ -39,10 +41,13 @@ function BotCollection({ enlistBot }) {
     setBots(sortedBots);
   };
 
+
   return (
     <div>
-      <SortBar sortBots={sortBots}/> <br/>
-      <div className="row">
+      <FilterData bots={bots}/>
+    <div>
+           <SortBar sortBots={sortBots}/> <br/>
+          <div className="row">
         {bots.map((bot) => (
           <div className="col-sm-3 mb-3 mb-sm-2" key={bot.id}>
             <div className="card" onClick={() => ClickCard(bot)}>
@@ -57,12 +62,15 @@ function BotCollection({ enlistBot }) {
                     <i className="fas fa-shield-alt">{bot.armor}</i>
                   </small>
                 </div>
-                <button type="button" className="bg bg-danger sm" onClick={() => deleteBot(bot.id)}>X</button>
+                <div  className="d-grid gap-2 col-6 mx-auto">
+                <button type="button" className="bg bg-danger lg" onClick={() => deleteBot(bot.id)}>X</button>
+                </div>
               </div>
             </div>
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 }

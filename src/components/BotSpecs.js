@@ -25,7 +25,9 @@ function BotSpecs() {
                         </div>
                         <div className="col-md-8">
                             <div className="card-body">
+
                                 <h5 className="card-title">Name: {viewBot.name}</h5>
+                                <p className="card-text">ID: {viewBot.id}</p>
                                 <p className="card-text">{viewBot.catchphrase}</p>
                                 <p className="card-text">Class: {viewBot.bot_class} </p>
                                 <div className="card-footer">
@@ -35,6 +37,7 @@ function BotSpecs() {
                                         <i className="	fas fa-shield-alt">{viewBot.armor}</i>
                                     </small>
                                 </div> <br/>
+                                
                                 <div  className="d-grid gap-2 col-4 ">
                                 <a href="/" role="button" className="btn btn-secondary">Go Back</a>  
                                 <button className="btn btn-secondary">Enlist</button>                            
