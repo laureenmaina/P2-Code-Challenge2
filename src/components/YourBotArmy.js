@@ -1,13 +1,12 @@
 import React from "react";
-import SortBar from "./SortBar";
-import BotSpecs from "./BotSpecs";
 
-function BotArmy({ enlistedBots, releaseBot }) {
+
+function BotArmy() {
    
 
   return (
     <div>
-      <SortBar />
+  
    
               </div>
       

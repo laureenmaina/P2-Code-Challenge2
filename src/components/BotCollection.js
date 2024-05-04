@@ -1,7 +1,7 @@
-import React from "react"
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import SortBar from "./SortBar";
 
-function BotCollection({ enlistBot, id }) {
+function BotCollection({ enlistBot }) {
   const [bots, setBots] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ function BotCollection({ enlistBot, id }) {
       .then((data) => setBots(data));
   }, []);
 
-  function DeleteBot(id) {
+  function deleteBot(id) {
     fetch(`https://json-server-bot.onrender.com/bots/${id}`, {
       method: "DELETE",
       headers: {
@@ -27,17 +27,21 @@ function BotCollection({ enlistBot, id }) {
   }
 
   const ClickCard = (bot) => {
-    enlistBot(bot);
-    console.log("Deleted");
+    enlistBot(bot.id);
   };
 
+  // const sortBots =()=>{
+
+
+  // }
+
   return (
-    <div >
+    <div>
+      <SortBar /> <br/>
       <div className="row">
         {bots.map((bot) => (
-          <div className="col-sm-3 mb-3 mb-sm-2" >
-            <div className="card" key={bot.id} onClick={() => ClickCard(bot)}>
-              <button type="button" className="bg bg-danger sm" onClick={() => DeleteBot(id)}>X</button>
+          <div className="col-sm-3 mb-3 mb-sm-2" key={bot.id}>
+            <div className="card" onClick={() => ClickCard(bot)}>
               <img src={bot.avatar_url} className="card-img-top" alt="..." />
               <div className="card-body">
                 <h5 className="card-title">{bot.name}</h5>
@@ -46,13 +50,10 @@ function BotCollection({ enlistBot, id }) {
                   <small className="text-body-secondary">
                     <i className="fa fa-heart">{bot.health}</i>
                     <i className='fas fa-bolt'>{bot.damage}</i>
-                    <i className="	fas fa-shield-alt">{bot.armor}</i>
+                    <i className="fas fa-shield-alt">{bot.armor}</i>
                   </small>
-
                 </div>
-
-
-
+                <button type="button" className="bg bg-danger sm" onClick={() => deleteBot(bot.id)}>X</button>
               </div>
             </div>
           </div>
