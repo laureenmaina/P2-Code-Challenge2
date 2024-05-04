@@ -1,27 +1,18 @@
-import React from "react"
-import { useState } from "react"
+import React from 'react';
 
+function SortBar({ sortBots }) {
+  const handleSort = (criteria) => {
+    sortBots(criteria);
+  };
 
-function SortBar(){
-    const [searchBot, setSearchBot]= useState([])
-
-    function HandleSearchBot(event){
-        setSearchBot(event.target.value)
-    }
+  return (
+    <div className="sort-bar d-grid gap-2 d-md-flex justify-content-md-start">
     
-    return(
-        <div>
-        <form className="d-flex" role="search">
-        <input
-         className="form-control me-2"
-          type="search" 
-          placeholder="Search" 
-          aria-label="Search"
-          value={searchBot}
-          onChange={HandleSearchBot}></input>  
-        </form>
-        </div>
-    )
+      <button onClick={() => handleSort('health')}>Sort by Health</button>
+      <button onClick={() => handleSort('damage')}>Sort by Damage</button>
+      <button onClick={() => handleSort('armor')}>Sort by Armor</button>
+    </div>
+  );
 }
 
-export default SortBar
+export default SortBar;

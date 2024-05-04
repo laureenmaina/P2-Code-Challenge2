@@ -30,14 +30,18 @@ function BotCollection({ enlistBot }) {
     enlistBot(bot.id);
   };
 
-  // const sortBots =()=>{
-
-
-  // }
+    const sortBots = (c) => {
+    const sortedBots = [...bots].sort((a, b) => {
+      if (a[c] < b[c]) return -1;
+      if (a[c] > b[c]) return 1;
+      return 0;
+    });
+    setBots(sortedBots);
+  };
 
   return (
     <div>
-      <SortBar /> <br/>
+      <SortBar sortBots={sortBots}/> <br/>
       <div className="row">
         {bots.map((bot) => (
           <div className="col-sm-3 mb-3 mb-sm-2" key={bot.id}>
