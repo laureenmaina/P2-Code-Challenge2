@@ -45,7 +45,7 @@ function BotCollection({enlistBot,id}) {
               <small className="text-body-secondary">
               <i className="fa fa-heart">{bot.health}</i> 
              <i className='fas fa-bolt'>{bot.damage}</i>
-             <i className="fa fa-heart">{bot.armor}</i>
+             <i className="	fas fa-shield-alt">{bot.armor}</i>
               </small>
         
             </div>
