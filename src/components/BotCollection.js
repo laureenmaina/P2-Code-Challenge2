@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SortBar from "./SortBar";
 import FilterData from "./Filter";
-import BotArmy from "./YourBotArmy";
-import BotSpecs from "./BotSpecs";
+
 
 function BotCollection() {
   const [bots, setBots] = useState([]);
@@ -16,6 +15,7 @@ function BotCollection() {
 
   // Delete bot
   function deleteBot(id) {
+    setBots((prevBots) => prevBots.filter((bot) => bot.id !== id));
     fetch(`https://json-server-bot.onrender.com/bots/${id}`, {
       method: "DELETE",
       headers: {
@@ -25,6 +25,7 @@ function BotCollection() {
       .then((response) => response.json())
       .then((data) => console.log("Deleted bot"));
   }
+
 
   // Sort bots
   const sortBots = (c) => {
@@ -40,7 +41,7 @@ function BotCollection() {
     <div>
      
       <div>
-      {/* <FilterData bots={bots}/> */}
+      <FilterData bots={bots}/>
       </div>
       <SortBar sortBots={sortBots} /> <br/>
       <div className="row">

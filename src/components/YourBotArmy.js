@@ -1,15 +1,13 @@
 import React from "react";
-import BotSpecs from "./BotSpecs";
 
-function BotArmy({ enlistedBots, releaseBot }) {
+function BotArmy({ enlistedBots}) {
   return (
     <div>
-      <div className="bg bg-warning">     
-         </div>
+      <div className="bg bg-warning">
+      </div>
       <ul>
         {enlistedBots.map(bot => (
-          
-          <div key={bot.id} className="card col-sm-3 mb-3 mb-sm-2">
+          <div key={bot.id} className="row card col-sm-3 mb-3 mb-sm-2">
             <div className="row g-0 ">
               <div className="col-md-4">
                 <img
@@ -19,7 +17,7 @@ function BotArmy({ enlistedBots, releaseBot }) {
                 />
               </div>
 
-             <div className="col-md-8">
+              <div className="col-md-8">
                 <div className="card-body">
                   <h5 className="card-title">Name: {bot.name}</h5>
                   <p className="card-text">ID: {bot.id}</p>
@@ -36,11 +34,11 @@ function BotArmy({ enlistedBots, releaseBot }) {
               </div>
             </div>
           </div>
-         
+
         ))}
       </ul>
     </div>
-  
+
   );
 }
 
