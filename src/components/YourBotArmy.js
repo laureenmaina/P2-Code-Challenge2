@@ -7,14 +7,10 @@ function BotArmy({ enlistedBots}) {
       </div>
       <ul>
         {enlistedBots.map(bot => (
-          <div key={bot.id} className="row card col-sm-3 mb-3 mb-sm-2">
+          <div key={bot.id} className="row col-sm-3 mb-3 mb-sm-2 card">
             <div className="row g-0 ">
               <div className="col-md-4">
-                <img
-                  src={bot.avatar_url}
-                  className="img-fluid rounded-start"
-                  alt={bot.name}
-                />
+                <img src={bot.avatar_url} className="img-fluid rounded-start" alt={bot.name}/>
               </div>
 
               <div className="col-md-8">

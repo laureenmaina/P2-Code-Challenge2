@@ -50,7 +50,6 @@ function BotSpecs() {
   return (
     <div>      
         <div className="bg bg-warning">
-
          <BotArmy enlistedBots={enlistedBots} releaseBot={releaseBot}/>
          </div>
         
