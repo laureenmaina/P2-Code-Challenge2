@@ -19,7 +19,7 @@ function App({ enlistBot}) {
   return (
     <div>
       <Routes>
-        <Route path='/' element={<BotCollection enlistBot={enlistBot} />} />
+        <Route path='/P2-Code-Challenge2' element={<BotCollection enlistBot={enlistBot} />} />
         <Route path='/bot-army' element={<BotArmy enlistedBots={enlistedBots} releaseBot={releaseBot} />} />
         <Route path='/bots/:botId' element={<BotSpecs />} />
       </Routes>
