@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import BotArmy from "./YourBotArmy";
+import BotCollection from "./BotCollection";
 
 function BotSpecs() {
   const { botId } = useParams();
@@ -47,10 +48,11 @@ function BotSpecs() {
     return <div>Kindly wait for the selected Bot to load...</div>;
   }
   return (
-    <div>
+    <div>           
         <div className="bg bg-warning">
          <BotArmy enlistedBots={enlistedBots} releaseBot={releaseBot}/>
          </div>
+         
       <div className="card mb-3">
         <div className="row g-0">
           <div className="col-md-4">
@@ -83,7 +85,11 @@ function BotSpecs() {
           </div>
         </div>
       </div>
+      <BotCollection enlistBot={enlistBot}/>
     </div>
+   
+     
+    
   );
 }
 

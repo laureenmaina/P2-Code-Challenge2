@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SortBar from "./SortBar";
 import FilterData from "./Filter";
+import BotArmy from "./YourBotArmy";
+import BotSpecs from "./BotSpecs";
 
 function BotCollection() {
   const [bots, setBots] = useState([]);
@@ -36,8 +38,9 @@ function BotCollection() {
 
   return (
     <div>
+     
       <div>
-      <FilterData bots={bots}/>
+      {/* <FilterData bots={bots}/> */}
       </div>
       <SortBar sortBots={sortBots} /> <br/>
       <div className="row">
