@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-function BotSpecs() {
+function BotSpecs({setEnlistedBots,enlistedBots}) {
   const { botId } = useParams();
   const [viewBots, setViewBots] = useState([]);
 
@@ -14,16 +14,29 @@ function BotSpecs() {
 
   const selectedBot = viewBots.find((bot) => bot.id === Number(botId));
 
-  const handleEnlist = () => {
-    // Implement logic to enlist the bot
+  const [enlistedBotClasses, setEnlistedBotClasses] = useState({
+    Support: false,
+    Medic: false,
+    Assault: false,
+    Defender: false,
+    Captain: false,
+    Witch: false
+  });
+  
+
+  const enlistBot = (bot) => {
+    const { bot_class } = bot 
+    if (!enlistedBotClasses[bot_class]) {
+      setEnlistedBotClasses({ ...enlistedBotClasses, [bot_class]: true });
+      setEnlistedBots([...enlistedBots, bot]);
+    } else {
+      console.log(`Already enlisted a bot from ${bot_class}`);
+    }
   };
 
   if (!selectedBot) {
     return <div>Click a Bot...</div>; 
   }
-
-
-
   return (
     <div>
       <div className="card mb-3">
@@ -51,7 +64,7 @@ function BotSpecs() {
               <br />
               <div className="d-grid gap-2 col-4">
               <a href="/" role="button" className="btn btn-secondary">Go Back</a>  
-                <button onClick={handleEnlist} className="btn btn-secondary">Enlist</button>
+                <button onClick={()=> enlistBot()} className="btn btn-secondary">Enlist</button>
               </div>
               <br />
             </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SortBar from "./SortBar";
+import FilterData from "./Filter";
 
 function BotCollection({ enlistBot }) {
   const [bots, setBots] = useState([]);
@@ -35,6 +36,9 @@ function BotCollection({ enlistBot }) {
 
   return (
     <div>
+      <div>
+      <FilterData bots={bots}/>
+      </div>
       <SortBar sortBots={sortBots} />
       <div className="row">
         {bots.map((bot) => (
@@ -47,9 +51,9 @@ function BotCollection({ enlistBot }) {
                   <p className="card-text">{bot.catchphrase}</p>
                   <div className="card-footer">
                     <small className="text-body-secondary">
-                      <i className="fa fa-heart">{bot.health}</i>
-                      <i className="fas fa-bolt">{bot.damage}</i>
-                      <i className="fas fa-shield-alt">{bot.armor}</i>
+                      <i className="fa fa-heart">{bot.health}  </i> 
+                      <i className="fas fa-bolt ">{bot.damage}  </i>
+                      <i className="fas fa-shield-alt"> {bot.armor} </i>
                     </small>
                   </div>
                 </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import FilterData from "./Filter";
 
 
 function BotArmy() {
