@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import BotArmy from "./YourBotArmy";
 
-function BotSpecs({setEnlistedBots,enlistedBots}) {
+function BotSpecs() {
   const { botId } = useParams();
   const [viewBots, setViewBots] = useState([]);
+  const [enlistedBotClasses, setEnlistedBotClasses] = useState({
+    Support: false,
+    Medic: false,
+    Assault: false,
+    Defender: false,
+    Captain: false,
+    Witch: false
+  });
+  const [enlistedBots, setEnlistedBots] = useState([]);
 
   useEffect(() => {
     fetch("https://json-server-bot.onrender.com/bots")
@@ -14,31 +24,33 @@ function BotSpecs({setEnlistedBots,enlistedBots}) {
 
   const selectedBot = viewBots.find((bot) => bot.id === Number(botId));
 
-  const [enlistedBotClasses, setEnlistedBotClasses] = useState({
-    Support: false,
-    Medic: false,
-    Assault: false,
-    Defender: false,
-    Captain: false,
-    Witch: false
-  });
-  
+  const releaseBot = (id) => {
+    const updatedBots = enlistedBots.filter((bot) => bot.id !== id);
+    setEnlistedBots(updatedBots);
+  };
 
-  const enlistBot = (bot) => {
-    const { bot_class } = bot 
+  const enlistBot = () => {
+    if (!selectedBot) {
+      console.log("Selected bot not found.");
+      return;
+    }
+    const { bot_class } = selectedBot;
     if (!enlistedBotClasses[bot_class]) {
       setEnlistedBotClasses({ ...enlistedBotClasses, [bot_class]: true });
-      setEnlistedBots([...enlistedBots, bot]);
+      setEnlistedBots([...enlistedBots, selectedBot]);
     } else {
       console.log(`Already enlisted a bot from ${bot_class}`);
     }
   };
 
   if (!selectedBot) {
-    return <div>Click a Bot...</div>; 
+    return <div>Kindly wait for the selected Bot to load...</div>;
   }
   return (
     <div>
+        <div className="bg bg-warning">
+         <BotArmy enlistedBots={enlistedBots} releaseBot={releaseBot}/>
+         </div>
       <div className="card mb-3">
         <div className="row g-0">
           <div className="col-md-4">
@@ -63,8 +75,8 @@ function BotSpecs({setEnlistedBots,enlistedBots}) {
               </div>
               <br />
               <div className="d-grid gap-2 col-4">
-              <a href="/" role="button" className="btn btn-secondary">Go Back</a>  
-                <button onClick={()=> enlistBot()} className="btn btn-secondary">Enlist</button>
+                <a href="/" role="button" className="btn btn-secondary"> Go Back</a>
+                <button onClick={enlistBot} className="btn btn-secondary"> Enlist</button>
               </div>
               <br />
             </div>

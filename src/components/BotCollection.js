@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import SortBar from "./SortBar";
 import FilterData from "./Filter";
 
-function BotCollection({ enlistBot }) {
+function BotCollection() {
   const [bots, setBots] = useState([]);
 
   useEffect(() => {
@@ -25,10 +25,10 @@ function BotCollection({ enlistBot }) {
   }
 
   // Sort bots
-  const sortBots = (criteria) => {
+  const sortBots = (c) => {
     const sortedBots = [...bots].sort((a, b) => {
-      if (a[criteria] < b[criteria]) return -1;
-      if (a[criteria] > b[criteria]) return 1;
+      if (a[c] < b[c]) return -1;
+      if (a[c] > b[c]) return 1;
       return 0;
     });
     setBots(sortedBots);
@@ -39,7 +39,7 @@ function BotCollection({ enlistBot }) {
       <div>
       <FilterData bots={bots}/>
       </div>
-      <SortBar sortBots={sortBots} />
+      <SortBar sortBots={sortBots} /> <br/>
       <div className="row">
         {bots.map((bot) => (
           <div className="col-sm-3 mb-3 mb-sm-2" key={bot.id}>

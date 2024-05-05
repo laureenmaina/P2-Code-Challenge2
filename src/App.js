@@ -7,9 +7,9 @@ import BotSpecs from './components/BotSpecs';
 import BotArmy from './components/YourBotArmy';
 
 
-
-function App({enlistBot}) {
+function App({ enlistBot}) {
   const [enlistedBots, setEnlistedBots] = useState([]);
+
 
   const releaseBot = (id) => {
     const updatedBots = enlistedBots.filter((bot) => bot.id !== id);
