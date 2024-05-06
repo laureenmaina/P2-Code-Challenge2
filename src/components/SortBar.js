@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SortBar({ sortBots }) {
+function SortBar({ sortBots }) {               // from bot collection
   const handleSort = (criteria) => {
     sortBots(criteria);
   };

@@ -80,7 +80,7 @@ function BotSpecs() {
               </div>
               <br />
               <div className="d-grid gap-2 col-4">
-                <a href="/" role="button" className="btn btn-secondary"> Go Back</a>
+                <a href="/P2-Code-Challenge2" role="button" className="btn btn-secondary"> Go Back</a>
                 <button onClick={enlistBot} className="btn btn-secondary"> Enlist</button>
               </div>
               <br />

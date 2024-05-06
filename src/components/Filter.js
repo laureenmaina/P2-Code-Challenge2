@@ -3,7 +3,6 @@ import React, { useState } from "react";
 function FilterData({ bots }) {
   const [selectedFilters, setSelectedFilters] = useState([]);
 
-  // Function to handle checkbox change
   const handleFilterChange = (event) => {
     const { value, checked } = event.target;
     setSelectedFilters((prevState) => {
@@ -15,26 +14,20 @@ function FilterData({ bots }) {
     });
   };
 
-  // Filter bots based on selected filters
+
   const filteredBots = bots.filter((bot) => {
     if (selectedFilters.length === 0) return true;
     return selectedFilters.includes(bot.bot_class);
   });
 
-  // Get unique class options
+
   const classOptions = [...new Set(bots.map((bot) => bot.bot_class))];
 
   return (
     <div>
-      {/* Render checkboxes for each class option */}
       {classOptions.map((botClass) => (
         <label key={botClass} style={{ marginRight: "10px" }}>
-          <input
-            type="checkbox"
-            value={botClass}
-            checked={selectedFilters.includes(botClass)}
-            onChange={handleFilterChange}
-          />
+          <input type="checkbox"value={botClass} checked={selectedFilters.includes(botClass)} onChange={handleFilterChange}/>
           {botClass}
         </label>
       ))}

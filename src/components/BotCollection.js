@@ -30,9 +30,9 @@ function BotCollection() {
   // Sort bots
   const sortBots = (c) => {
     const sortedBots = [...bots].sort((a, b) => {
-      if (a[c] < b[c]) return -1;
-      if (a[c] > b[c]) return 1;
-      return 0;
+      if (a[c] < b[c]) return -1; // a should come before b
+      if (a[c] > b[c]) return 1; // b should come before a
+      return 0;  // order should not change
     });
     setBots(sortedBots);
   };

@@ -2,17 +2,18 @@ import React from "react";
 
 function BotArmy({ enlistedBots}) {
   return (
-    <div>
+    <div> 
       <div className="bg bg-warning">
-      </div>
       <ul>
         {enlistedBots.map(bot => (
-          <div key={bot.id} className="row col-sm-3 mb-3 mb-sm-2 card">
-            <div className="row g-0 ">
+
+          <div key={bot.id} className="row col-sm-3 mb-3 mb-sm-2 card ">
+            
+            <div className="row g-0">
               <div className="col-md-4">
                 <img src={bot.avatar_url} className="img-fluid rounded-start" alt={bot.name}/>
               </div>
-
+            
               <div className="col-md-8">
                 <div className="card-body">
                   <h5 className="card-title">Name: {bot.name}</h5>
@@ -33,6 +34,7 @@ function BotArmy({ enlistedBots}) {
 
         ))}
       </ul>
+    </div>
     </div>
 
   );
